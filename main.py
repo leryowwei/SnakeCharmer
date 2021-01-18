@@ -41,18 +41,18 @@
 
 import sys
 import time
-from ques_1
+from ques_2 import question_2
 
 def main():
 
     if len(sys.argv) == 2:  # If the optional argument is given then
-        print "Wow, I can't believe you actually read the doc string"
-        print "However, SAFETY MOMENT \n " \
-              "Please think carefully about giving away personal data and if it is really necessary \n" \
-              "See https://infozone.snclavalin.com/en/files/documents/data-privacy-book_en.pdf for further info"
+        print("Wow, I can't believe you actually read the doc string")
+        print("However, SAFETY MOMENT \n "
+              "Please think carefully about giving away personal data and if it is really necessary \n"
+              "See https://infozone.snclavalin.com/en/files/documents/data-privacy-book_en.pdf for further info")
 
     elif len(sys.argv) > 2:  # If multiple arguments are given
-        print "Too many arguments given. Please Read the docstring for usage"
+        print("Too many arguments given. Please Read the docstring for usage")
 
     else:
 
@@ -60,17 +60,22 @@ def main():
         difficulty_score = 0  # Difficulty score starts at zero
         problems_solved = 0  # Those problems aren't going to solve themselves
 
-        ques_1.problem_statement()
-        ques_1.solve
-        difficulty_score = difficulty_score + ques_1.problem_difficulty**1.5
-        problems_solved = problems_solved + 1
-        print "Difficulty score after this problem {} \n".format(difficulty_score)
+        questions = []
+        questions.append(question_2())
+
+        for q in questions:
+            print(q.problem_statement())
+            ans = q.solve()
+            dif = q.problem_difficulty()
+            difficulty_score += dif**1.5
+            problems_solved += 1
+            print("The difficulty score for this problem is {0}\n".format(dif))
 
         end_time = time.time()
         total_time = end_time - start_time
         performance_score = total_time/problems_solved
-        print "Total performance score {} (seconds per problem) \n".format(performance_score)
-        print "Total difficulty score {} \n".format(difficulty_score)
+        print("Total performance score {} (seconds per problem)\n".format(performance_score))
+        print("Total difficulty score {} \n".format(difficulty_score))
 
 
 if __name__ == '__main__':
