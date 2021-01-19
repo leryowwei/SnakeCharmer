@@ -41,7 +41,6 @@
 
 import sys
 import time
-from ques_2 import question_2
 
 def main():
 
@@ -60,16 +59,20 @@ def main():
         difficulty_score = 0  # Difficulty score starts at zero
         problems_solved = 0  # Those problems aren't going to solve themselves
 
-        questions = []
-        questions.append(question_2())
-
-        for q in questions:
-            print(q.problem_statement())
-            ans = q.solve()
-            dif = q.problem_difficulty()
-            difficulty_score += dif**1.5
-            problems_solved += 1
-            print("The difficulty score for this problem is {0}\n".format(dif))
+        # loop through all questions available
+        for num in range(1, 744):
+            try:
+                module = __import__("ques_{}".format(num))
+                q = getattr(module, "question_{}".format(num))()
+                print("-----Question {}-----".format(num))
+                print(q.problem_statement())
+                print("Answer: {}".format(q.solve()))
+                dif = q.problem_difficulty()
+                difficulty_score += q.difficulty_score()
+                problems_solved += 1
+                print("The difficulty score for this problem is {0}\n".format(q.difficulty_score()))
+            except ModuleNotFoundError:
+                pass
 
         end_time = time.time()
         total_time = end_time - start_time

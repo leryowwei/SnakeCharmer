@@ -7,3 +7,6 @@ class question_base:
 
     def problem_difficulty(self):
         return self.difficulty
+
+    def difficulty_score(self):
+        return self.difficulty ** 1.5
