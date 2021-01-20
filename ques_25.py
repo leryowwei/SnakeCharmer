@@ -1,6 +1,6 @@
 from ques_base import *
 
-class question_x(question_base):
+class question_25(question_base):
 
     def __init__(self):
         self.statement = "1000-digit Fibonacci number"
