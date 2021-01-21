@@ -12,7 +12,7 @@ class question_123(question_base):
         # (also no need to test any primes where n is even, as this will always give remainder 2)
 
         #  Calculate a list of primes
-        primes = primes_in_range(1, 500000)  # Calculate list of primes here
+        primes = self.primes_in_range(1, 500000)  # Calculate list of primes here
         primes.insert(0, 0)  # Add zero as the first number in the list such that primes[n] is the nth prime
 
         # Test remainders
@@ -26,15 +26,3 @@ class question_123(question_base):
                     least_n = n  # then set least_n as curent value of n and then break out of loop
                     break
         return least_n
-
-def primes_in_range(lower, upper):
-    primes_list=[]
-    for num in range(lower, upper + 1):
-        # all prime numbers are greater than 1
-        if num > 1:
-            for i in range(2, int(math.sqrt(num)+1)):  # Only need to check for divisors up to sqrt(n)
-                if (num % i) == 0:
-                    break
-            else:
-                primes_list.append(num)
-    return primes_list
