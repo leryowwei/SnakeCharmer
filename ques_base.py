@@ -1,10 +1,13 @@
 """Base class for the questions and also consists of static methods for common/utils functions"""
 
 import math
+import time
 
 class question_base:
     statement = None
     difficulty = None
+    start_time = None
+    end_time = None
 
     def problem_statement(self):
         return self.statement
@@ -14,6 +17,13 @@ class question_base:
 
     def difficulty_score(self):
         return self.difficulty ** 1.5
+
+    def start_timer(self):
+        self.start_time = time.time()
+
+    def time_spent(self):
+        self.end_time = time.time()
+        return self.end_time - self.start_time
 
     # common functions that can be accessed
     @staticmethod

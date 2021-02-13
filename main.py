@@ -66,17 +66,19 @@ def main():
                 q = getattr(module, "question_{}".format(num))()
                 print("-----Question {}-----".format(num))
                 print(q.problem_statement())
+                q.start_timer()
                 print("Answer: {}".format(q.solve()))
-                dif = q.problem_difficulty()
+                print("Time spent {}s\n".format(q.time_spent()))
+                print("Difficulty level {}, difficulty score for this problem is {}".format(q.problem_difficulty(), q.difficulty_score()))
                 difficulty_score += q.difficulty_score()
                 problems_solved += 1
-                print("The difficulty score for this problem is {0}\n".format(q.difficulty_score()))
             except ModuleNotFoundError:
                 pass
 
         end_time = time.time()
         total_time = end_time - start_time
         performance_score = total_time/problems_solved
+        print("------------------------")
         print("Total performance score {} (seconds per problem)\n".format(performance_score))
         print("Total difficulty score {} \n".format(difficulty_score))
 
