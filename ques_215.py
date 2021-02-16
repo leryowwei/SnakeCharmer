@@ -3,33 +3,40 @@ from ques_base import *
 class question_215(question_base):
 
     def __init__(self):
-        self.statement = "An Arithmetic Geometric Sequence"
-        self.difficulty = 0.40
+        self.statement = "Crack-free Walls"
+        self.difficulty = 0.50
 
-    @staticmethod
-    def func_u(k, r):
-        return (900 - 3 * k) * pow(r, k - 1)
+        # define wall dimensions
+        self.wall_width = 32
+        self.wall_height = 10
+        self.pos_of_crack = []
+
+    def get_crack_positions(self, cracks, position):
+        if position < 0:
+            raise ValueError()
+        elif position < self.wall_width:
+            # brick can be width of 2 or 3
+            for i in (2, 3):
+                cracks.append(position + i)
+                self.get_crack_positions(cracks, position + i)
+                cracks.pop()
+        elif position == self.wall_width:
+            self.pos_of_crack.append(frozenset(cracks[: -1]))
 
     def solve(self):
+        # find out all possible position of the bricks for the whole width of wall
+        self.get_crack_positions([], 0)
 
-        # define constants
-        lo = 1.001
-        hi = 1.003
-        eps = 1e-13
-        tot = -600000000000
+        # find disjoint sets such that the two position of cracks do not intersect
+        noncrackindices = [
+            [i for (i, cp1) in enumerate(self.pos_of_crack) if cp0.isdisjoint(cp1)]
+            for cp0 in self.pos_of_crack]
 
-        while hi - lo > eps:
-            r = (hi + lo) * 0.5
+        ways = [1] * len(self.pos_of_crack)
 
-            s = 0
-            # calculate sum from 1 to 5000 using function U
-            for i in range(1, 5001):
-                s += self.func_u(i, r)
+        # form a list of all possible combinations to get crack free wall throughout the whole height
+        for i in range(1, self.wall_height):
+            temp_ways = [sum(ways[k] for k in nci) for nci in noncrackindices]
+            ways = temp_ways
 
-            if s < tot:
-                hi = r
-            else:
-                lo = r
-
-        # return with 12 dp
-        return "%.12f" % r
+        return sum(ways)
