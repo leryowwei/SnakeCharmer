@@ -26,7 +26,7 @@
     OUTPUTS:
         > A sequence of problem statements followed by solutions is printed to the screen
         > A running tally of the total difficulty score achieved is printed
-        > A final difficulty score, total run-time, performance score and assorted stats on problems solved is printed
+        > A final total difficulty score and performance score for all the problems solved is printed
 
 
     ASSUMPTIONS:
@@ -34,8 +34,9 @@
         > Assumes all modules have actually been coded correctly to solve the problem statement and don't just
         spit back 'random(0,10000000,1)'
         > Difficulty score is calculated as sum(difficulty^1.5)
-        > Performance score is calculated as
+        > Performance score is calculated as "total time" divided by "problems solved"
         > You are sitting comfortably
+        > Yuo are using Python 3, preferably Python 3.9 or above
 
 """
 
