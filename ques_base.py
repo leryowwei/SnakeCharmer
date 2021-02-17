@@ -58,3 +58,28 @@ class question_base:
                 else:
                     primes_list.append(num)
         return primes_list
+
+    @staticmethod
+    def get_all_factors(n):
+        # if n = 1, then fact = [1]
+        if n == 1:
+            return [1]
+        # 1 is always a factor
+        fact = [1]
+
+        # find all 'lower' factors
+        for i in range(2, int(math.sqrt(n)+1)):
+            if (n % i) == 0:
+                fact.append(i)
+
+        if fact[-1]*fact[-1] == n:  # n is a square number
+            reverse_idx = range(len(fact)-2, -1, -1)
+        else:
+            reverse_idx = range(len(fact)-1, -1, -1)
+
+        # loop back through factors to find the pair
+        # start from highest factor so fact is ordered
+        for i in reverse_idx:
+            fact.append(int(n / fact[i]))
+
+        return fact
