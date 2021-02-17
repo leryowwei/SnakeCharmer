@@ -36,7 +36,7 @@
         > Difficulty score is calculated as sum(difficulty^1.5)
         > Performance score is calculated as "total time" divided by "problems solved"
         > You are sitting comfortably
-        > Yuo are using Python 3, preferably Python 3.9 or above
+        > You are using Python 3, preferably Python 3.9 or above
 
 """
 
