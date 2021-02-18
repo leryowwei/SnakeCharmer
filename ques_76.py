@@ -8,6 +8,3 @@ class question_76(question_31):
     def __init__(self):
         self.statement = "Counting summations"
         self.difficulty = 0.1
-
-test = question_76()
-print(test.solve())
