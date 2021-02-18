@@ -1,14 +1,14 @@
 from ques_base import *
 
-class question_x(question_base):
+class question_682(question_base):
 
     def __init__(self):
         self.statement = "5-Smooth Pairs"
         self.difficulty = 0.50
 
     def solve(self):
-        five_smooth_equation(10 ** 7)
-        return answer
+        ans = five_smooth_equation(10 ** 7)
+        return ans
 
 # Alternatively, we can find the different partitions of the set
 # { [2,2], [2,3], [2,5], [3,2], [3,3], [3,5], [5,2], [5,3], [5,5] }
@@ -81,19 +81,19 @@ def pairs_given_abc(abc):
 
 
 def five_smooth(number):
-    print("Attempting n = {}".format(number))
+    #print("Attempting n = {}".format(number))
     sum = 0
     list_of_abc = five_smooth_sets(number)  # This however is slow
     start_sum=time.time()
     for s in list_of_abc:
        sum += pairs_given_abc(s)  # This is fast
     end_sum=time.time()
-    print("summing took {}s".format(end_sum -start_sum))
+    #print("summing took {}s".format(end_sum -start_sum))
     sum %= 1000000007  # give answer as sum = sum % 1000000007, as per problem statement
     return sum
 
 
-def closed_form_equation(num):
+def five_smooth_equation(num):
     #  Computing value for small number of f(10^n) results in the following closed form formula
     # f(10^n) = 10^(4n-1) + 4*10^(3n) + 592*10^(2n-1) + 384*10^n + h(n mod 6) / 4032
     # with h(0) = 4032, h(1) = h(4) = h(5) = 2880 and h(2) = h(3) = 1728
@@ -104,7 +104,7 @@ def closed_form_equation(num):
         # Let's get the value of n from the length of num
         h = [4032, 2880, 1728, 1728, 2880, 2880]
         five_smooth_numbers = (10**(4*n - 1) + 4*10**(3*n) + 592*10**(2*n - 1) + 384*10**n + h[n % 6])//4032
-        print(five_smooth_numbers)
+        #print(five_smooth_numbers)
         answer = five_smooth_numbers % 1000000007
     else:
         print("Not a power of 10")

@@ -156,7 +156,7 @@ def find_engineers_paradise():
         if is_practical(n - 8, p) and is_practical(n - 4, p) and is_practical(n, p) and is_practical(n + 4, p) \
                 and is_practical(n + 8, p):
             engineers_paradise.append(n)  # Add n to paradise list
-    print("Engineers' paradises are {}".format(engineers_paradise))
+    #print("Engineers' paradises are {}".format(engineers_paradise))
     return sum(engineers_paradise)
 
 
@@ -170,5 +170,5 @@ def verify_engineers_paradise():
                 if not is_prime(n - 7, p) and not is_prime(n - 5, p) and not is_prime(n - 1, p) \
                         and not is_prime(n + 1, p) and not is_prime(n + 5, p) and not is_prime(n + 7, p):
                     engineers_paradise.append(n)  # Add n to paradise list
-    print("Engineers' paradises are {}".format(engineers_paradise))
+    #print("Engineers' paradises are {}".format(engineers_paradise))
     return sum(engineers_paradise)

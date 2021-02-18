@@ -33,3 +33,24 @@ class question_87(question_base):
             prev_n = n
 
         return len(new_list)
+
+def primes_in_range(lower, upper):
+    primes_list=[]
+    for num in range(lower, upper + 1):
+        # all prime numbers are greater than 1
+        if num > 1:
+            for i in range(2, int(math.sqrt(num)+1)):  # Only need to check for divisors up to sqrt(n)
+                if (num % i) == 0:
+                    break
+            else:
+                primes_list.append(num)
+    return primes_list
+
+def list_upto(long_list, target):
+    sublist = long_list
+    for p in long_list:
+        if p > target:
+            i = long_list.index(p)
+            sublist = long_list[:i]
+            break
+    return sublist
