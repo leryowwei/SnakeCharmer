@@ -34,9 +34,9 @@
         > Assumes all modules have actually been coded correctly to solve the problem statement and don't just
         spit back 'random(0,10000000,1)'
         > Difficulty score is calculated as sum(difficulty^1.5)
-        > Performance score is calculated as "total time" divided by "problems solved"
+        > Performance score is calculated as "total time" divided by "total number of problems solved"
         > You are sitting comfortably
-        > You are using Python 3, preferably Python 3.9 or above
+        > You are using Python 3. We suggest using Python 3.7 or above
 
 """
 
@@ -69,8 +69,8 @@ def main():
                 print(q.problem_statement())
                 q.start_timer()
                 print("Answer: {}".format(q.solve()))
-                print("Time spent {}s\n".format(q.time_spent()))
-                print("Difficulty level {}, difficulty score for this problem is {}".format(q.problem_difficulty(), q.difficulty_score()))
+                print("Time spent {}s".format(q.time_spent()))
+                print("Difficulty level {}, difficulty score for this problem is {}\n".format(q.problem_difficulty(), q.difficulty_score()))
                 difficulty_score += q.difficulty_score()
                 problems_solved += 1
             except ModuleNotFoundError:
