@@ -1,5 +1,5 @@
 from ques_base import *
-import math
+from numpy import prod
 
 class question_8(question_base):
 
@@ -45,7 +45,7 @@ class question_8(question_base):
         #loop through all digits
         for i in range(n - m + 1):
             subset = integers[i:i + m] # 13 numbers
-            product = math.prod(subset)
+            product = prod(subset)
             ans = max(ans, product)
         return ans
 
